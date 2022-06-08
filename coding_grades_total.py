@@ -2,7 +2,7 @@ from __future__ import print_function
 import re
 
 total_coding_score = 0.0;
-f = open("../grades/TestsCoding.txt", "r")
+f = open("grades/TestsCoding.txt", "r")
 
 for line in f:
 	q_num, pass_num = re.findall(r'\d+', line)
