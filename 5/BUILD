@@ -2,7 +2,7 @@ cc_library(
     name = "CPPLib",
     srcs = ["q.cc"],
     hdrs = ["q.h"],
-    visibility = ["//visibility:public"],
+    visibility = ["//visibility:private"],
 )
 
 cc_test(

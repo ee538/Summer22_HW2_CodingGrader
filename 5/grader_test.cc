@@ -31,9 +31,14 @@ TEST(ConcatenateDynamicArrays, BothWithNonZeroSize) {
 
   std::vector<int> actual_vector;
 
+  std::cout<<"input: {0,1,2,3,4},5,{6,7,8,9},4"<<std::endl;
+  std::cout << "output : {" ;
   for (int i = 0; i < size_1 + size_2; i++) {
     actual_vector.push_back(actual[i]);
+    std::cout << actual[i]<<" ";
   }
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{0 1 2 3 4 5 6 7 8 }" <<std::endl;
 
   EXPECT_THAT(actual_vector, ElementsAreArray({0, 1, 2, 3, 4, 5, 6, 7, 8}));
 }
@@ -55,10 +60,14 @@ TEST(ConcatenateDynamicArrays, FirstWithZeroSize) {
 
   std::vector<int> actual_vector;
 
+  std::cout<<"input: nullptr,0,{0,1,2,3},4"<<std::endl;
+  std::cout << "output : {" ;
   for (int i = 0; i < size_1 + size_2; i++) {
     actual_vector.push_back(actual[i]);
+    std::cout << actual[i]<<" ";
   }
-
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{0 1 2 3 }" <<std::endl;
   EXPECT_THAT(actual_vector, ElementsAreArray({0, 1, 2, 3}));
 }
 
@@ -79,10 +88,14 @@ TEST(ConcatenateDynamicArrays, SecondWithZeroSize) {
 
   std::vector<int> actual_vector;
 
+  std::cout<<"input: {5, 6, 7, 8, 9},5,nullptr,0"<<std::endl;
+  std::cout << "output : {" ;
   for (int i = 0; i < size_1 + size_2; i++) {
     actual_vector.push_back(actual[i]);
+    std::cout << actual[i]<<" ";
   }
-
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{5 6 7 8 9 }" <<std::endl;
   EXPECT_THAT(actual_vector, ElementsAreArray({5, 6, 7, 8, 9}));
 }
 
@@ -92,31 +105,58 @@ TEST(ConcatenateVectors, BothNonEmpty) {
   std::vector<int> v1 = {1, 2, 3, 4};
   std::vector<int> v2 = {5, 6};
   CPPLib lib;
+  std::vector<int> result = lib.Concatenate(v1, v2);
 
-  EXPECT_THAT(lib.Concatenate(v1, v2), ElementsAreArray({1, 2, 3, 4, 5, 6}));
+  std::cout<<"input: {1,2,3,4},{5,6}"<<std::endl;
+  std::cout << "output : {" ;
+  for(auto item: result)
+    std::cout<< item <<" ";
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{1 2 3 4 5 6}" <<std::endl;
+  EXPECT_THAT(result, ElementsAreArray({1, 2, 3, 4, 5, 6}));
 }
 
 TEST(ConcatenateVectors, FirstEmpty) {
   std::vector<int> v1;
   std::vector<int> v2 = {5, 6};
   CPPLib lib;
+  std::vector<int> result = lib.Concatenate(v1, v2);
 
-  EXPECT_THAT(lib.Concatenate(v1, v2), ElementsAreArray({5, 6}));
+  std::cout<<"input: {},{5,6}"<<std::endl;
+  std::cout << "output : {" ;
+  for(auto item: result)
+    std::cout<< item <<" ";
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{5 6 }" <<std::endl;
+
+  EXPECT_THAT(result, ElementsAreArray({5, 6}));
 }
 
 TEST(ConcatenateVectors, SecondEmpty) {
   std::vector<int> v1 = {1, 2, 3, 4};
   std::vector<int> v2;
   CPPLib lib;
-
-  EXPECT_THAT(lib.Concatenate(v1, v2), ElementsAreArray({1, 2, 3, 4}));
+  std::vector<int> result = lib.Concatenate(v1, v2);
+  std::cout<<"input: {1,2,3,4},{}"<<std::endl;
+  std::cout << "output : {" ;
+  for(auto item: result)
+    std::cout<< item <<" ";
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{1 2 3 4 }" <<std::endl;
+  EXPECT_THAT(result, ElementsAreArray({1, 2, 3, 4}));
 }
 
 TEST(ConcatenateVectors, BothEmpty) {
   std::vector<int> v1;
   std::vector<int> v2;
   CPPLib lib;
-
+  std::vector<int> result = lib.Concatenate(v1, v2);
+  std::cout<<"input: {},{}"<<std::endl;
+  std::cout << "output : {" ;
+  for(auto item: result)
+    std::cout<< item <<" ";
+  std::cout << "}" <<std::endl;
+  std::cout <<"expected: "<< "{}" <<std::endl;
   EXPECT_TRUE(lib.Concatenate(v1, v2).empty());
 }
 //-----------------------------------------------------------------------------

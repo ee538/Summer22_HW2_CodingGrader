@@ -11,6 +11,9 @@ TEST(SwapByPointer, aIsNull) {
 
   CPPLib lib;
   lib.SwapByPointer(&a, nullptr);
+  std::cout<<"input1: &1, input2: nullptr"<<std::endl;
+  std::cout<<"output: "<< a<<std::endl;
+  std::cout<<"expected: "<<1<<std::endl;
   EXPECT_EQ(a, 1);
 }
 
@@ -19,6 +22,9 @@ TEST(SwapByPointer, bIsNull) {
 
   CPPLib lib;
   lib.SwapByPointer(nullptr, &b);
+  std::cout<<"input1: nullptr, input2: &2"<<std::endl;
+  std::cout<<"output: "<< b<<std::endl;
+  std::cout<<"expected: "<< 2<<std::endl;
   EXPECT_EQ(b, 2);
 }
 
@@ -28,6 +34,11 @@ TEST(SwapByPointer, test1) {
 
   CPPLib lib;
   lib.SwapByPointer(&a, &b);
+  std::cout<<"input1: &1, input2: &2"<<std::endl;
+  std::cout<<"output a: "<< a<<std::endl;
+  std::cout<<"expected a: "<< 2<<std::endl;
+  std::cout<<"output b: "<< b<<std::endl;
+  std::cout<<"expected b: "<< 1<<std::endl;
   EXPECT_EQ(a, 2);
   EXPECT_EQ(b, 1);
 }
@@ -38,7 +49,12 @@ TEST(SwapByReference, test1) {
   float b = 2;
 
   CPPLib lib;
-  lib.SwapByReference(a, b);
+  lib.SwapByReference(a, b);  
+  std::cout<<"input1: &1, input2: &2"<<std::endl;
+  std::cout<<"output a: "<< a<<std::endl;
+  std::cout<<"expected a: "<< 2<<std::endl;
+  std::cout<<"output b: "<< b<<std::endl;
+  std::cout<<"expected b: "<< 1<<std::endl;
   EXPECT_EQ(a, 2);
   EXPECT_EQ(b, 1);
 }
